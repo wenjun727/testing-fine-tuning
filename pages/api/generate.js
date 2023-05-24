@@ -27,7 +27,7 @@ export default async function (req, res) {
 
   try {
     const completion = await openai.createCompletion({
-      model: "text-davinci-003",
+      model: "ada:ft-halal-holiday-ai-2023-05-24-15-39-40",
       prompt: generatePrompt(animal),
       temperature: 0.6,
     });
@@ -51,12 +51,14 @@ export default async function (req, res) {
 function generatePrompt(animal) {
   const capitalizedAnimal =
     animal[0].toUpperCase() + animal.slice(1).toLowerCase();
-  return `Suggest three names for an animal that is a superhero.
+  return `Suggest a superhero name for a ${capitalizedAnimal}.`;
+}
 
+/*
 Animal: Cat
 Names: Captain Sharpclaw, Agent Fluffball, The Incredible Feline
 Animal: Dog
 Names: Ruff the Protector, Wonder Canine, Sir Barks-a-Lot
 Animal: ${capitalizedAnimal}
-Names:`;
-}
+Names:
+*/
